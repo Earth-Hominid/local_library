@@ -11,7 +11,7 @@ const AuthorSchrema = new Schema({
 
 // Virtual for author's full name
 
-AuthorSchrema.virtual('name').get(() => {
+AuthorSchrema.virtual('name').get(function () {
   // To avoid errors in cases where an author does not have either a family name or first name
   // We want to make sure we handle the exception by returning an empty string for that case
 
@@ -26,7 +26,7 @@ AuthorSchrema.virtual('name').get(() => {
 });
 
 // Virtual for author's lifespan
-AuthorSchrema.virtual('lifespan').get(() => {
+AuthorSchrema.virtual('lifespan').get(function () {
   const lifetime_string = '';
   if (this.date_of_birth) {
     lifetime_string = this.date_of_birth.getYear().toString();
@@ -40,7 +40,7 @@ AuthorSchrema.virtual('lifespan').get(() => {
 
 // Virtual for author's URL
 
-AuthorSchrema.virtual('url').get(() => {
+AuthorSchrema.virtual('url').get(function () {
   return '/catalog/author' + this._id;
 });
 
