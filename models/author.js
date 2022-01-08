@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const AuthorSchrema = new Schema({
+const AuthorSchema = new Schema({
   first_name: { type: String, required: true, maxLength: 100 },
   family_name: { type: String, required: true, maxLength: 100 },
   date_of_birth: { tyep: Date },
@@ -11,7 +11,7 @@ const AuthorSchrema = new Schema({
 
 // Virtual for author's full name
 
-AuthorSchrema.virtual('name').get(function () {
+AuthorSchema.virtual('name').get(function () {
   // To avoid errors in cases where an author does not have either a family name or first name
   // We want to make sure we handle the exception by returning an empty string for that case
 
@@ -26,7 +26,7 @@ AuthorSchrema.virtual('name').get(function () {
 });
 
 // Virtual for author's lifespan
-AuthorSchrema.virtual('lifespan').get(function () {
+AuthorSchema.virtual('lifespan').get(function () {
   const lifetime_string = '';
   if (this.date_of_birth) {
     lifetime_string = this.date_of_birth.getYear().toString();
@@ -40,7 +40,7 @@ AuthorSchrema.virtual('lifespan').get(function () {
 
 // Virtual for author's URL
 
-AuthorSchrema.virtual('url').get(function () {
+AuthorSchema.virtual('url').get(function () {
   return '/catalog/author' + this._id;
 });
 
