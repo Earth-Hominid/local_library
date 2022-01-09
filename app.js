@@ -3,8 +3,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var catalogRouter = require('./routes/catalog'); //Import routes for "catalog" area of site
+
 const app = express();
 const wiki = require('./routes/wiki');
 
@@ -13,7 +15,7 @@ const mongoose = require('mongoose');
 
 //Set up default mongoose connection
 const mongoDB =
-  'mongodb+srv://earth:<password>@cluster0.169lf.mongodb.net/myDataBaseName?retryWrites=true&w=majority';
+  'mongodb+srv://<username>:<password>@cluster0.169lf.mongodb.net/myDataBaseName?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Get the default connection
@@ -34,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter); // Add catalog routes to middleware chain.
 
 // Wiki
 app.use('/wiki', wiki);
