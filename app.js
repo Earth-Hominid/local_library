@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 
 //Set up default mongoose connection
 const mongoDB =
-  'mongodb+srv://earth:clothtouchedtherelics780@cluster0.169lf.mongodb.net/myDataBaseName?retryWrites=true&w=majority';
+  'mongodb+srv://earth:<password>@cluster0.169lf.mongodb.net/myDataBaseName?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Get the default connection
