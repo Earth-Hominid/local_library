@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-const BookInstanceSchema = new Schema({
+var BookInstanceSchema = new Schema({
   book: { type: Schema.Types.ObjectId, ref: 'Book', required: true }, //reference to the associated book
   imprint: { type: String, required: true },
   status: {
@@ -14,6 +14,7 @@ const BookInstanceSchema = new Schema({
   due_back: { type: Date, default: Date.now },
 });
 
+// Virtual for bookinstance's URL
 BookInstanceSchema.virtual('url').get(function () {
   return '/catalog/bookinstance/' + this._id;
 });
