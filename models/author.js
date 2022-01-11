@@ -54,5 +54,25 @@ AuthorSchema.virtual('date_of_death_formatted').get(function () {
     : '';
 });
 
+// AuthorSchema.virtual('lifespan_formatted').get(function () {
+//   var lifetime_string = '';
+//   const lifetime_string_formatted = '';
+//   if (this.date_of_birth) {
+//     lifetime_string = this.date_of_birth.getYear().toString();
+//     lifettime_string_formatted = DateTime.fromJSDate(
+//       this.lifetime_string
+//     ).toLocaleString(DateTime.DATE_MED);
+//   }
+//   lifetime_string += ' - ';
+//   lifetime_string_formatted += ' - ';
+//   if (this.date_of_death) {
+//     lifetime_string += this.date_of_death.getYear();
+//     lifetime_string_formatted = DateTime.fromJSDate(
+//       this.lifetime_string_formatted
+//     ).toLocaleString(DateTime.DATE_MED);
+//   }
+//   return lifetime_string_formatted;
+// });
+
 //Export model
 module.exports = mongoose.model('Author', AuthorSchema);
