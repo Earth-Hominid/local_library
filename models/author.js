@@ -24,55 +24,55 @@ AuthorSchema.virtual('name').get(function () {
   return fullname;
 });
 
-// Virtual for author's lifespan
-AuthorSchema.virtual('lifespan').get(function () {
-  var lifetime_string = '';
-  if (this.date_of_birth) {
-    lifetime_string = this.date_of_birth.getYear().toString();
-  }
-  lifetime_string += ' - ';
-  if (this.date_of_death) {
-    lifetime_string += this.date_of_death.getYear();
-  }
-  return lifetime_string;
-});
+// // Virtual for author's lifespan
+// AuthorSchema.virtual('lifespan').get(function () {
+//   var lifetime_string = '';
+//   if (this.date_of_birth) {
+//     lifetime_string = this.date_of_birth.getYear().toString();
+//   }
+//   lifetime_string += ' - ';
+//   if (this.date_of_death) {
+//     lifetime_string += this.date_of_death.getYear();
+//   }
+//   return lifetime_string;
+// });
 
 // Virtual for author's URL
 AuthorSchema.virtual('url').get(function () {
   return '/catalog/author/' + this._id;
 });
 
-AuthorSchema.virtual('date_of_birth_formatted').get(function () {
-  return this.date_of_birth
-    ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED)
-    : '';
-});
-
-AuthorSchema.virtual('date_of_death_formatted').get(function () {
-  return this.date_of_death
-    ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED)
-    : '';
-});
-
-// AuthorSchema.virtual('lifespan_formatted').get(function () {
-//   var lifetime_string = '';
-//   const lifetime_string_formatted = '';
-//   if (this.date_of_birth) {
-//     lifetime_string = this.date_of_birth.getYear().toString();
-//     lifettime_string_formatted = DateTime.fromJSDate(
-//       this.lifetime_string
-//     ).toLocaleString(DateTime.DATE_MED);
-//   }
-//   lifetime_string += ' - ';
-//   lifetime_string_formatted += ' - ';
-//   if (this.date_of_death) {
-//     lifetime_string += this.date_of_death.getYear();
-//     lifetime_string_formatted = DateTime.fromJSDate(
-//       this.lifetime_string_formatted
-//     ).toLocaleString(DateTime.DATE_MED);
-//   }
-//   return lifetime_string_formatted;
+// AuthorSchema.virtual('date_of_birth_formatted').get(function () {
+//   return this.date_of_birth
+//     ? DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED)
+//     : '';
 // });
+
+// AuthorSchema.virtual('date_of_death_formatted').get(function () {
+//   return this.date_of_death
+//     ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED)
+//     : '';
+// });
+
+// Virtual for author's lifespan
+AuthorSchema.virtual('lifespan_formatted').get(function () {
+  let birth = DateTime.fromJSDate(this.date_of_birth).toLocaleString(
+    DateTime.DATE_MED
+  );
+  let death = DateTime.fromJSDate(this.date_of_death).toLocaleString(
+    DateTime.DATE_MED
+  );
+
+  if (death == 'Invalid DateTime') {
+    death = 'unknown';
+  }
+
+  if (birth == 'Invalid DateTime') {
+    birth = 'unknown';
+  }
+
+  return `${birth} - ${death}`;
+});
 
 //Export model
 module.exports = mongoose.model('Author', AuthorSchema);

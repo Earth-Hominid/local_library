@@ -14,7 +14,7 @@ const wiki = require('./routes/wiki');
 const mongoose = require('mongoose');
 //Set up default mongoose connection
 const mongoDB =
-  'mongodb+srv://@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
+  'mongodb+srv://earth:4tYrm8IEwxm9E0Df@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 //Get the default connection
 const db = mongoose.connection;
