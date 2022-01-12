@@ -18,4 +18,4 @@ The "Views" have been constructed using the PUG templating language.
 
 ## License
 
-Licensed under the [MIT License](url.license).
+Licensed under the [MIT License](LICENSE).
