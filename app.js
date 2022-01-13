@@ -18,8 +18,6 @@ app.use(helmet());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-// var mongoDB =
-//   'mongodb+srv://test:thisisatest123@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
 
 var dev_db_url =
   'mongodb+srv://test:thisisatest123@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
