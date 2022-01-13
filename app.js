@@ -18,10 +18,17 @@ app.use(helmet());
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
+// var mongoDB =
+//   'mongodb+srv://test:thisisatest123@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
+
 var dev_db_url =
-  'mongodb+srv://earth:4tYrm8IEwxm9E0Df@cluster0.169lf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+  'mongodb+srv://test:thisisatest123@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 mongoose.Promise = global.Promise;
 //Get the default connection
 var db = mongoose.connection;
