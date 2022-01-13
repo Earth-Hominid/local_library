@@ -4,6 +4,8 @@
 
 A library website built using Express, taken from The Mozilla Developer Network tutorial.
 
+See the live demo [here](https://secret-crag-48856.herokuapp.com/).
+
 ## Description
 
 This tutorial focuses on building a back-end for a fictitious library's website. The application is architected using the Model-View-Controller pattern.
@@ -21,3 +23,13 @@ The "Views" have been constructed using the PUG templating language.
 ## License
 
 Licensed under the [MIT License](LICENSE.md).
+
+## License
+
+This project is licensed under the [MIT] License - see the LICENSE.md file for details
+
+## Acknowledgments
+
+- [The Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/nodejs/lessons/express-105-forms-and-deployment)
+
+- [MDN Web Docs Express Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website)
