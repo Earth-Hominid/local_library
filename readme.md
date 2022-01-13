@@ -16,13 +16,14 @@ Both the "Models" and "Controllers" have been built to handle the author, the bo
 
 The "Views" have been constructed using the PUG templating language.
 
-## Acknowledgments
+## Install
 
-- [MDN](https://developer.mozilla.org/)
-
-## License
-
-Licensed under the [MIT License](LICENSE.md).
+```
+git clone https://github.com/Earth-Hominid/local_library.git
+cd local_library
+npm install
+npm start
+```
 
 ## License
 
