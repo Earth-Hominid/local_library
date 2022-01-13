@@ -6,7 +6,7 @@ A library website built using Express, taken from The Mozilla Developer Network 
 
 ## Description
 
-This tutorial focuses on building a back-end for a fictitious library's website. The application is architected using the Model-View-Controller methodology.
+This tutorial focuses on building a back-end for a fictitious library's website. The application is architected using the Model-View-Controller pattern.
 
 NodeJS's runtime engine along with the Express framework is used to build the Web-Server, while MongoDB is utilized to construct the database.
 
@@ -20,4 +20,4 @@ The "Views" have been constructed using the PUG templating language.
 
 ## License
 
-Licensed under the [MIT License](LICENSE).
+Licensed under the [MIT License](LICENSE.md).

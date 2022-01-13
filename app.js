@@ -3,9 +3,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog'); //Import routes for "catalog" area of site
+
 var compression = require('compression');
 var helmet = require('helmet');
 
@@ -14,14 +16,15 @@ const wiki = require('./routes/wiki');
 
 app.use(helmet());
 
-// Import the mongoose module
+// Set up mongoose connection
 const mongoose = require('mongoose');
-//Set up default mongoose connection
-const mongoDB =
-  'mongodb+srv://earth1:eBk58fNJp5PKSP7n@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
+var dev_db_url =
+  'mongodb+srv://earth:4tYrm8IEwxm9E0Df@cluster0.169lf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.Promise = global.Promise;
 //Get the default connection
-const db = mongoose.connection;
+var db = mongoose.connection;
 //Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
