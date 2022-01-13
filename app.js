@@ -6,15 +6,19 @@ const logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var catalogRouter = require('./routes/catalog'); //Import routes for "catalog" area of site
+var compression = require('compression');
+var helmet = require('helmet');
 
 const app = express();
 const wiki = require('./routes/wiki');
+
+app.use(helmet());
 
 // Import the mongoose module
 const mongoose = require('mongoose');
 //Set up default mongoose connection
 const mongoDB =
-  'mongodb+srv://@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
+  'mongodb+srv://earth1:eBk58fNJp5PKSP7n@cluster0.169lf.mongodb.net/local_library?retryWrites=true&w=majority';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 //Get the default connection
 const db = mongoose.connection;
@@ -29,6 +33,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression()); //Compress all routes
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
